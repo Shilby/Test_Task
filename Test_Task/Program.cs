@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using Test_Task.Data;
+using Test_Task.DI;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,12 +11,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure DbContext with MySQL
-builder.Services.AddDbContext<Context>(options =>
-{
-    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-                     new MySqlServerVersion(new Version(8, 0, 21)));
-});
+// Configure DbContext with SQLSERVER
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<CandidateContext>(options =>
+    options.UseSqlServer(connectionString));
+
 //Injections
 builder.Services.AddServices();
 builder.Services.AddRepositories();

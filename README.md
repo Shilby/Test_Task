@@ -13,7 +13,6 @@ The application follows a layered architecture with clear separation of concerns
 - **Dependency Injection**: Configured to inject services and repositories.
 
 ### Project Structure API
-
 ├── Controllers
 │ └── CandidateController.cs
 ├── Data

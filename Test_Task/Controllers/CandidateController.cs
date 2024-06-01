@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Test_Task.DTOs;
 using Test_Task.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Test_Task.Controllers
 {
@@ -9,10 +10,12 @@ namespace Test_Task.Controllers
     public class CandidateController : Controller
     {
         private readonly ICandidateService _candidateService;
+        private readonly ILogger<CandidateController> _logger;
 
-        public CandidateController(ICandidateService candidateService)
+        public CandidateController(ICandidateService candidateService, ILogger<CandidateController> logger)
         {
             _candidateService = candidateService;
+            _logger = logger;
         }
 
         [HttpPost]
@@ -30,6 +33,7 @@ namespace Test_Task.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "An error occurred while adding or updating the candidate.");
                 return StatusCode(500, "Internal server error");
             }
         }

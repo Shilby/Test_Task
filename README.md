@@ -116,9 +116,6 @@ The application follows a layered architecture with clear separation of concerns
 - Testing: 1 hour
 - Documentation: 1 hour
 
-## License
-This project is licensed under the MIT License.
-
 ## Contact
-For any inquiries, please contact [Your Name](mailto:your.email@example.com).
+For any inquiries, please contact [Hasbi Younes](Prohasbi.younes@gmail.com).
 

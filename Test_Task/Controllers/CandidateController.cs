@@ -23,10 +23,15 @@ namespace Test_Task.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = await _candidateService.AddOrUpdateCandidateAsync(candidateDto);
-            return Ok(result);
+            try
+            {
+                var result = await _candidateService.AddOrUpdateCandidateAsync(candidateDto);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
     }
 }
-
-
